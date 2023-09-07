@@ -26,43 +26,43 @@
                             </div>
                         </div>
 
-                        @forelse ($wishlist as $wishlistItem )
-                        <div class="cart-item">
+                            @forelse ($wishlist as $wishlistItem )
+                            <div class="cart-item">
 
-                            <div class="row">
+                                <div class="row">
 
-                                <div class="col-md-6 my-auto">
-                                    <a
-                                        href="{{ url('collections/'.$wishlistItem->product->category->slug.'/'.$wishlistItem->product->slug) }}">
-                                        <label class="product-name">
-                                            <img src=" {{ $wishlistItem->product->productImages[0]->image }}"
-                                                style="width: 50px; height: 50px" alt="">
-                                            {{ $wishlistItem->product->name }}
-                                        </label>
-                                    </a>
-                                </div>
-                                <div class="col-md-2 my-auto">
-                                    <label class="price"> {{ $wishlistItem->product->selling_price }}</label>
-                                </div>
+                                    <div class="col-md-6 my-auto">
+                                        <a
+                                            href="{{ url('collections/'.$wishlistItem->product->category->slug.'/'.$wishlistItem->product->slug) }}">
+                                            <label class="product-name">
+                                                <img src=" {{ $wishlistItem->product->productImages[0]->image }}"
+                                                    style="width: 50px; height: 50px" alt="">
+                                                {{ $wishlistItem->product->name }}
+                                            </label>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-2 my-auto">
+                                        <label class="price"> {{ $wishlistItem->product->selling_price }}</label>
+                                    </div>
 
-                                <div class="col-md-2 col-5 my-auto">
-                                    <div class="remove">
-                                        <button type="submit" wire:click="removeWishListItem({{ $wishlistItem->id }})"
-                                            class="btn btn-danger btn-sm">
-                                            <i class="fa fa-trash"></i> Remove
-                                        </button>
+                                    <div class="col-md-2 col-5 my-auto">
+                                        <div class="remove">
+                                            <button type="submit" wire:click="removeWishListItem({{ $wishlistItem->id }})"
+                                                class="btn btn-danger btn-sm">
+                                                <i class="fa fa-trash"></i> Remove
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                @empty
+                You don't have any wishlist
+                @endforelse
             </div>
-            @empty
-            You don't have any wishlist
-            @endforelse
         </div>
-    </div>
 
 
 

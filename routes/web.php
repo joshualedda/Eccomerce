@@ -1,6 +1,7 @@
 
 <?php
 
+use App\Http\Livewire\Test;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontEndController;
@@ -119,7 +120,12 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
 
 
     Route::get('/brand', App\Http\Livewire\Admin\Brand\Index::class);
-
+    //Test
 
 });
 
+    Route::get('test/1', Test::class);
+
+Route::get('test/index',function (){
+    return view('frontend.main');
+});

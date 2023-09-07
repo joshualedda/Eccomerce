@@ -87,7 +87,6 @@ class ProductController extends Controller
 
         }
 
-        return redirect('/admin/products')->with('message', 'Product has been created');
 
     }
     public function edit(int $product_id)
