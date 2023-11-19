@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontEndController;
 use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Frontend\WishlistController;
 
 /*
@@ -129,3 +130,6 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
 Route::get('test/index',function (){
     return view('frontend.main');
 });
+
+
+Route::get('/getChartData', [DashboardController::class, 'getStudentCount'])->name('getStudentCount');
