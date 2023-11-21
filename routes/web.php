@@ -133,3 +133,6 @@ Route::get('test/index',function (){
 
 
 Route::get('/getChartData', [DashboardController::class, 'getStudentCount'])->name('getStudentCount');
+
+
+Route::get('/export', [DashboardController::class, 'export'])->name('export ');

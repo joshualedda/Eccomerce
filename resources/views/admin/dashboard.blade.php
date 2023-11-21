@@ -17,54 +17,25 @@
         </div>
 
 
+        <div class="container mt-5">
+            <h2 class="mb-4">User Excel Export</h2>
+
+            <!-- Form to upload Excel file -->
+            <form action="{{ route('export') }}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="form-group">
+                    <label for="excelFile">Choose Excel File</label>
+                    <input type="file" class="form-control-file" id="excelFile" name="excelFile" accept=".xlsx, .xls">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Export Users</button>
+            </form>
+        </div>
+
+
+
       </div>
     </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const ctx = document.getElementById('myChart').getContext('2d');
-
-        function fetchDataAndUpdateChart() {
-            fetch('/getChartData') // Assuming you have a route named 'getChartData' in your routes file
-                .then(response => response.json())
-                .then(data => {
-                    const xValues = data.xValues;
-                    const yValues = data.yValues;
-
-                    new Chart(ctx, {
-                        type: "line",
-                        data: {
-                            labels: xValues,
-                            datasets: [{
-                                fill: false,
-                                lineTension: 0,
-                                backgroundColor: "rgba(0,0,255,1.0)",
-                                borderColor: "rgba(0,0,255,0.1)",
-                                data: yValues
-                            }]
-                        },
-                        options: {
-                            legend: { display: false },
-                            scales: {
-                                yAxes: [{ ticks: { min: Math.min(...yValues) - 1, max: Math.max(...yValues) + 1 } }]
-                            }
-                        }
-                    });
-                })
-                .catch(error => {
-                    console.error('Error fetching data:', error);
-                });
-        }
-
-        // Initial chart update
-        fetchDataAndUpdateChart();
-
-        // Optionally, you can set up a periodic update
-        // setInterval(fetchDataAndUpdateChart, 5000); // Update every 5 seconds, for example
-    });
-</script>
 
 @endsection
