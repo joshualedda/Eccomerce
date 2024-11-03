@@ -24,21 +24,21 @@
                 </div>
 
                 <div class="mb-3">
-                    <label>Brand Name</label>
+                    <label class="form-label">Brand Name</label>
                     <input type="text" resetInput wire:model.defer="name" class="form-control">
                     @error('name') <small class="text-danger">{{ $message}}</small>
                     @enderror
                 </div>
 
                 <div class="mb-3">
-                    <label>Brand Slug</label>
+                    <label class="form-label">Brand Slug</label>
                     <input type="text" resetInput wire:model.defer="slug" class="form-control">
                     @error('slug') <small class="text-danger">{{ $message}}</small>
                     @enderror
                 </div>
 
                 <div class="mb-3">
-                    <label>Status</label>
+                    <label class="form-label">Status</label>
                  <input type="checkbox" resetInput wire:model.defer="status"/> Checked = hidden, Un-Cheked = Visible
                  @error('status') <small class="text-danger">{{ $message}}</small>
                  @enderror
@@ -81,21 +81,21 @@
                 </div>
 
                 <div class="mb-3">
-                    <label>Brand Name</label>
+                    <label class="form-label">Brand Name</label>
                     <input type="text" wire:model.defer="name" class="form-control">
                     @error('name') <small class="text-danger">{{ $message}}</small>
                     @enderror
                 </div>
 
                 <div class="mb-3">
-                    <label>Brand Slug</label>
+                    <label class="form-label">Brand Slug</label>
                     <input type="text"  wire:model.defer="slug" class="form-control">
                     @error('slug') <small class="text-danger">{{ $message}}</small>
                     @enderror
                 </div>
 
                 <div class="mb-3">
-                    <label>Status</label>
+                    <label class="form-label">Status</label>
                  <input type="checkbox"  wire:model.defer="status"/> Checked = hidden, Un-Cheked = Visible
                  @error('status') <small class="text-danger">{{ $message}}</small>
                  @enderror

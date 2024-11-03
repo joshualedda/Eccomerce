@@ -16,28 +16,30 @@ use App\Http\Requests\ProductFormRequest;
 class ProductController extends Controller
 {
 
-    public function index(){
+    public function index()
+    {
         $products = Product::all();
         return view('admin.products.index', compact('products'));
-
     }
 
-    public function create(){
+    public function create()
+    {
         $categories = Category::all();
         $brands = Brand::all();
         $colors = Color::where('status', '0')->get();
-        return view('admin.products.create', compact('categories','brands', 'colors'));
+        return view('admin.products.create', compact('categories', 'brands', 'colors'));
     }
 
 
     //product creation
-    public function store(ProductFormRequest $request){
-         $validatedData = $request->validated();
-         //this is where it will find and create the category id(primary key) to use as a foreign key
-         //once it found the id, you will going go create the product
+    public function store(ProductFormRequest $request)
+    {
+        $validatedData = $request->validated();
+        //this is where it will find and create the category id(primary key) to use as a foreign key
+        //once it found the id, you will going go create the product
 
         $category = Category::findOrFail($validatedData['category_id']);
-//the products are the products table
+        //the products are the products table
         $product = $category->products()->create([
             'category_id' => $validatedData['category_id'],
             'name' => $validatedData['name'],
@@ -50,44 +52,44 @@ class ProductController extends Controller
             'selling_price' => $validatedData['selling_price'],
             'product_quantity' => $validatedData['product_quantity'],
 
-            'trending' => $request->trending === true ? '1': '0',
-            'status' =>$request->trending === true ? '1': '0',
+            'trending' => $request->trending === true ? '1' : '0',
+            'status' => $request->trending === true ? '1' : '0',
 
             'meta_title' => $validatedData['meta_title'],
             'meta_keyword' => $validatedData['meta_keyword'],
             'meta_description' => $validatedData['meta_description'],
         ]);
 
-        if($request->hasFile('image')){
+        if ($request->hasFile('image')) {
             $uploadPath = 'uploads/products/';
 
             $i = 1;
-            foreach($request->file('image') as $imageFile){
-            $extention = $imageFile->getClientOriginalExtension();
-            $filename = time().$i++ . '.'.$extention;
-            $imageFile->move($uploadPath,$filename);
-            $finalImagePathName = $uploadPath.$filename;
+            foreach ($request->file('image') as $imageFile) {
+                $extention = $imageFile->getClientOriginalExtension();
+                $filename = time() . $i++ . '.' . $extention;
+                $imageFile->move($uploadPath, $filename);
+                $finalImagePathName = $uploadPath . $filename;
 
-            $product->productImages()->create([
-                'product_id' => $product->id,
-                'image' => $finalImagePathName,
-            ]);
+                $product->productImages()->create([
+                    'product_id' => $product->id,
+                    'image' => $finalImagePathName,
+                ]);
             }
             //for colors in another table
             if ($request->colors) {
                 foreach ($request->colors as $key => $color) {
                     $product->productColors()->create([
-                        'product_id' =>$product->id,
+                        'product_id' => $product->id,
                         'color_id' => $color,
                         'quantity' => $request->colorquantity[$key] ?? 0
                     ]);
                 }
             }
 
+            return redirect('admin/products');
+
 
         }
-
-
     }
     public function edit(int $product_id)
     {
@@ -101,7 +103,7 @@ class ProductController extends Controller
 
         return view('admin.products.edit', compact('product', 'categories', 'brands', 'colors'));
     }
-//update the data
+    //update the data
 
     public function update(ProductFormRequest $request, int $product_id)
     {
@@ -109,26 +111,26 @@ class ProductController extends Controller
         //the first(): only return one record
         //Once it's find the id
         $product = Category::findOrFail($validatedData['category_id'])
-                ->products()->where('id', $product_id)->first();
-if($product){
-    $product->update([
-                    'category_id' => $validatedData['category_id'],
-                    'name' => $validatedData['name'],
-                    'slug' => Str::slug($validatedData['slug']),
-                    'brand' => $validatedData['brand'],
-                    'small_description' => $validatedData['small_description'],
-                    'description' => $validatedData['description'],
+            ->products()->where('id', $product_id)->first();
+        if ($product) {
+            $product->update([
+                'category_id' => $validatedData['category_id'],
+                'name' => $validatedData['name'],
+                'slug' => Str::slug($validatedData['slug']),
+                'brand' => $validatedData['brand'],
+                'small_description' => $validatedData['small_description'],
+                'description' => $validatedData['description'],
 
-                    'original_price' => $validatedData['original_price'],
-                    'selling_price' => $validatedData['selling_price'],
-                    'product_quantity' => $validatedData['product_quantity'],
+                'original_price' => $validatedData['original_price'],
+                'selling_price' => $validatedData['selling_price'],
+                'product_quantity' => $validatedData['product_quantity'],
 
-                    'trending' => $request->trending === true ? '1': '0',
-                    'status' =>$request->trending === true ? '1': '0',
+                'trending' => $request->trending === true ? '1' : '0',
+                'status' => $request->trending === true ? '1' : '0',
 
-                    'meta_title' => $validatedData['meta_title'],
-                    'meta_keyword' => $validatedData['meta_keyword'],
-                    'meta_description' => $validatedData['meta_description'],
+                'meta_title' => $validatedData['meta_title'],
+                'meta_keyword' => $validatedData['meta_keyword'],
+                'meta_description' => $validatedData['meta_description'],
             ]);
 
 
@@ -148,24 +150,22 @@ if($product){
                     ]);
                 }
             }
-    return redirect('admin/products')->with('message', 'Updated Successfully');
-}else{
+            return redirect('admin/products')->with('message', 'Updated Successfully');
+        } else {
 
-    return redirect('admin/products')->with('message', 'No Such ID exists');
-}
-
+            return redirect('admin/products')->with('message', 'No Such ID exists');
+        }
     }
 
     public function destroyImage(int $product_image_id)
     {
         $productImage = ProductImage::findOrFail($product_image_id);
 
-        if(File::exists($productImage->image)){
+        if (File::exists($productImage->image)) {
             File::delete($productImage->image);
         }
         $productImage->delete();
         return redirect()->back()->with('message', 'Product deleted successfully');
-
     }
 
 
@@ -179,28 +179,4 @@ if($product){
         ]);
         return response()->json(['message' => 'Product Color Qty Updated']);
     }
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

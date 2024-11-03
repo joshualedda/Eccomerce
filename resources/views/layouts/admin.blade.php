@@ -22,10 +22,7 @@
     <link rel="stylesheet" href="{{ asset('admin/css/style.css') }}">
     <!-- endinject -->
     <link rel="shortcut icon" href="{{'admin/images/favicon.png'}}" />
-
-
-    {{-- Core UI --}}
-    {{-- <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui/dist/css/coreui.min.css"> --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 @livewireStyles
 </head>
 <body>
@@ -40,13 +37,18 @@
     </div>
 </div>
 
-
+<script>
+    $(document).ready(function() {
+        $('#datatable').DataTable();
+    })
+</script>
 <script src="{{ asset('admin/vendors/base/vendor.bundle.base.js') }}"></script>
 <script src="{{ asset('admin/vendors/chart.js/Chart.min.js') }}"></script>
 <script src="{{ asset('admin/vendors/datatables.net/jquery.dataTables.js') }}"></script>
 <script src="{{ asset('admin/vendors/datatables.net-bs4/dataTables.bootstrap4.js') }}"></script>
-{{--
-<script src="{{ asset('assests/js/jquery-3.6.3.min.js') }}"></script> --}}
+
+
+<script src="{{ asset('assests/js/jquery-3.6.3.min.js') }}"></script>
 
 <script src="{{ asset('admin/js/off-canvas.js') }}"></script>
 <script src="{{ asset('admin/js/hoverable-collapse.js') }}"></script>

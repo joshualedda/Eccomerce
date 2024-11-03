@@ -19,24 +19,24 @@
 @csrf
 
 <div class="mb-3">
-    <label>Title</label>
+    <label class="form-label">Title</label>
 <input type="text" name="title" class="form-control">
 </div>
 
 <div class="mb-3">
-    <label>Description</label>
+    <label class="form-label">Description</label>
 <input type="text" name="description" class="form-control">
 </div>
 
 
 <div class="mb-3">
-    <label>Image</label>
+    <label class="form-label">Image</label>
 <input type="file" name="image" class="form-control">
 </div>
 
 
 <div class="mb-3">
-    <label>Status</label>
+    <label class="form-label">Status</label>
 <input type="checkbox" name="status" style="width:30xp;height:30px" /> Checked=Hidden, Uncheked=Visibke
 </div>
 

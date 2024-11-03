@@ -1,21 +1,25 @@
 @extends('layouts.admin')
 @section('content')
 
-<div class=""></div>
-<div class="row">
+<section>
+
+    <div class="d-flex justify-content-end my-2">
+        <a href="products/create" class="btn btn-sm btn-dark">Add Product</a>
+    </div>
+
+    @if(session('message'))
+    <div class="alert alert-success">{{session('message')}}</div>
+    @endif
+
+
+
     <div class="col-md-12">
-        @if(session('message'))
-        <div class="alert alert-success">{{session('message')}}</div>
-        @endif
+
         <div class="card">
-            <div class="card-header">
-                <h4>
-                    <a href="products/create" class="btn btn-sm btn-dark float-end"> Add</a>
-                </h4>
-            </div>
+
 
             <div class="card-body">
-                <table class="table table-bordered table-striped">
+                               <table class="datatable table table-bordered table-striped" id="datatable">
                     <thead>
                         <tr>
                             <th>Category ID</th>
@@ -53,10 +57,9 @@
                 </table>
             </div>
         </div>
-        {{-- {{$products->links()}} --}}
-    </div>
-</div>
-</div>
+
 
 </div>
+
+</section>
 @endsection

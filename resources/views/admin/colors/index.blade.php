@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 @section('content')
 
-<div class=""></div>
 <div class="row">
     <div class="col-md-12">
         @if(session('message'))
@@ -16,7 +15,7 @@
 
             <div class="card-body">
 
-                <table class="table table-bordered table-striped">
+                               <table class="datatable table table-bordered table-striped" id="datatable">
                     <thead>
                         <tr>
                             <th>Color ID</th>

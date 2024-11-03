@@ -1,6 +1,7 @@
 
 <?php
 
+use App\Http\Controllers\ProfileController;
 use App\Http\Livewire\Test;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -9,6 +10,7 @@ use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Frontend\WishlistController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,22 +89,15 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
 
 
    //Color
-   Route::controller(ColorController::class)->group(function () {
+    Route::controller(ColorController::class)->group(function () {
     Route::get('/colors', 'index');
-
     Route::get('/colors/create', 'create');
-
     //adding the color
     Route::post('/colors/create', 'store');
-
-
     //view the single color
     Route::get('/colors/{color}/edit', 'edit');
-
     //update the color
     Route::put('/colors/{color_id}', 'update');
-
-
     });
 
 //sliders
@@ -117,22 +112,49 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
     });
 
 
+    // Profile Controller
+    Route::controller(ProfileController::class)->group(function () {
+        Route::get('/profile', 'index');
+    });
+
+    //Users
+    Route::controller(UserController::class)->group(function () {
+        Route::get('/users', 'index');
+        Route::get('/user/create', 'create')->name('user.create');
+        Route::post('/user/store', 'store')->name('user.store');
+        Route::get('/user/edit/{id}', 'edit')->name('user.edit');
+        Route::put('/user/update/{id}', 'update')->name('user.update');
+    });
+
+
+
+
 
 
 
     Route::get('/brand', App\Http\Livewire\Admin\Brand\Index::class);
     //Test
 
-});
+    });
 
     Route::get('test/1', Test::class);
 
-Route::get('test/index',function (){
-    return view('frontend.main');
-});
+    Route::get('test/index',function (){
+        return view('frontend.main');
+    });
 
 
+
+
+
+
+
+
+
+
+
+
+
+// Additional Functions
 Route::get('/getChartData', [DashboardController::class, 'getStudentCount'])->name('getStudentCount');
-
-
 Route::get('/export', [DashboardController::class, 'export'])->name('export ');

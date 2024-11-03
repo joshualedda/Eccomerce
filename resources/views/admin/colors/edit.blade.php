@@ -21,12 +21,12 @@
 @method('put')
 <div class="row">
 <div class="mb-3 col-md-6">
-    <label>Color Name</label>
+    <label class="form-label">Color Name</label>
 <input type="text" name="name" class="form-control" value="{{ $color->name }}">
 </div>
 
 <div class="mb-3 col-md-6">
-    <label>Color Code</label>
+    <label class="form-label">Color Code</label>
 <input type="text" name="code" class="form-control"  value="{{ $color->code }}">
 </div>
 

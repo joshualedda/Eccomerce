@@ -16,7 +16,7 @@
 
             <div class="card-body">
 
-                <table class="table table-bordered table-striped">
+                               <table class="datatable table table-bordered table-striped" id="datatable">
                     <thead>
                         <tr>
                             <th>ID</th>
