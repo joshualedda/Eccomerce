@@ -33,8 +33,6 @@
     <meta name="keyword" content=" @yield('meta_keyword') " />
     <meta name="author" content="Reiss Aki" />
 
-    {{-- Core UI --}}
-    {{-- <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui/dist/css/coreui.min.css"> --}}
 @livewireStyles
 </head>
 

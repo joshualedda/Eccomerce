@@ -1,7 +1,5 @@
 @include('partials.header')
-@extends('layouts.app')
 
-@section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -12,6 +10,7 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
+                        <!-- Name Field -->
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
 
@@ -26,6 +25,7 @@
                             </div>
                         </div>
 
+                        <!-- Email Field -->
                         <div class="row mb-3">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
@@ -40,6 +40,7 @@
                             </div>
                         </div>
 
+                        <!-- Password Field -->
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
@@ -54,6 +55,7 @@
                             </div>
                         </div>
 
+                        <!-- Confirm Password Field -->
                         <div class="row mb-3">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
 
@@ -62,6 +64,7 @@
                             </div>
                         </div>
 
+                        <!-- Submit Button -->
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
@@ -75,4 +78,5 @@
         </div>
     </div>
 </div>
-@endsection
+
+@include('partials.footer')
