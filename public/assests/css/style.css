@@ -4,7 +4,7 @@
 .main-navbar .top-navbar{
     background-color: #5f656d;
     padding-top: 10px;
-    padding-bottom: 10px;
+    /* padding-bottom: 10px; */
 }
 .main-navbar .top-navbar .brand-name{
     color: #fff;
@@ -57,7 +57,7 @@ font-size:15px;
 .category-card{
     border: 1px solid #ddd;
     /* box-shadow: 0 0 .125rem 0.25rem rgb(0 0 / 8%); */
-    margin-bottom: 24px;
+    /* margin-bottom: 24px; */
     background-color: #fff;
 }
 .category-card a{

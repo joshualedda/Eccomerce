@@ -17,7 +17,7 @@ class FrontEndController extends Controller
     public function index()
     {
         $sliders = Slider::where('status', '0')->get();
-        return view('frontend.index',compact('sliders'));
+        return view('frontend.index', compact('sliders'));
     }
 
     /**
@@ -25,7 +25,7 @@ class FrontEndController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-//string here: becase it will return a string representation//Also there aro no integer from the routes and we are not getting the ID
+    //string here: becase it will return a string representation//Also there aro no integer from the routes and we are not getting the ID
     public function productView(string $category_slug, string $product_slug)
     {
         $category = Category::where('slug', $category_slug)->first();
@@ -34,14 +34,11 @@ class FrontEndController extends Controller
         $product = $category->products()->where('slug', $product_slug)->where('status', '0')->first();
         //if merong ung product or nag eexist, mapupunta sya miso sa view page, then page wala am rereturn back
 
-        if($product)
-        {
-            return view('frontend.collections.products.view',compact('product', 'category'));
-        }
-        else {
+        if ($product) {
+            return view('frontend.collections.products.view', compact('product', 'category'));
+        } else {
             return redirect()->back();
         }
-
     }
 
 
@@ -51,16 +48,16 @@ class FrontEndController extends Controller
         return view('frontend.collections.category.index', compact('categories'));
     }
 
+
+    // After clicking the product
     public function products($category_slug)
     {
 
         $category = Category::where('slug', $category_slug)->first();
-        if($category){
-            return view('frontend.collections.products.index',compact('category',));
-        }else{
+        if ($category) {
+            return view('frontend.collections.products.index', compact('category',));
+        } else {
             return redirect()->back();
         }
     }
-
-
 }

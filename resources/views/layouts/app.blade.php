@@ -9,24 +9,24 @@
 
     <title>@yield('title')</title>
 
-    <!-- Scripts -->
-    {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
 
-    <link rel="stylesheet" href="{{ asset('admin/vendors/mdi/css/materialdesignicons.min.css') }}">
-    <link rel="stylesheet" href="{{asset('vendors/base/vendor.bundle.base.css')}}">
-    <!-- endinject -->
-    <!-- plugin css for this page -->
-    <link rel="stylesheet" href="{{ asset('admin/vendors/datatables.net-bs4/dataTables.bootstrap4.css') }}">
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
-    <link rel="stylesheet" href="{{ asset('admin/css/style.css') }}">
-    <!-- endinject -->
-    <link rel="shortcut icon" href="{{'admin/images/favicon.png'}}" />
+    {{-- Resources --}}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Eccomerce</title>
+    <link rel="shortcut icon" type="image/png" href="{{ asset('style/images/logos/favicon.png') }}" />
+    <link rel="stylesheet" href="{{ asset('style/css/styles.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('style/css/styles.css') }}" />
+    <link rel="icon" href="{{ asset('style/images/logo.png') }}" type="image/x-icon">
 
-    <link rel="stylesheet" href=" {{ asset('assests/css/bootstrap.min.css') }}" />
+    <!-- Test -->
+    <link rel="stylesheet" href="{{ asset('style/css/main.css') }}" />
+    {{-- End Resources --}}
 
-    {{-- navbar css --}}
-    <link rel="stylesheet" href="{{ asset('assests/css/style.css')}}" />
+
+    {{-- Own Style --}}
+    {{-- For the meantime (might delete later) --}}
+    {{-- <link rel="stylesheet" href="{{ asset('assests/css/style.css') }}" /> --}}
 
     {{-- metas --}}
     <meta name="description" content="   @yield('meta_description') " />
@@ -36,11 +36,12 @@
 @livewireStyles
 </head>
 
-<body>
+<body class="bg-light">
     <div id="app">
         @include('inc.frontend.navbar')
 
-        <main class="py-4">
+        {{--  --}}
+        <main class="">
             @yield('content')
         </main>
     </div>
