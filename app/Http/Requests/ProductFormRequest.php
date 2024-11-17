@@ -63,8 +63,8 @@ class ProductFormRequest extends FormRequest
             ],
 
             'product_quantity' => [
+                'required',
                 'integer',
-
             ],
 
             'trending' => [

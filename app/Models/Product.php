@@ -18,6 +18,7 @@ class Product extends Model
         'name',
         'slug',
         'brand',
+        'small_description',
         'description',
         'original_price',
         'selling_price',
@@ -25,7 +26,7 @@ class Product extends Model
         'trending',
         'status',
         'meta_title',
-        'meta_keywords',
+        'meta_keyword',
         'meta_description',
     ];
 

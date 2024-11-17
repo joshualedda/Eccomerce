@@ -13,8 +13,8 @@
           <div class="d-flex justify-content-between align-items-center mb-4">
             <h3 class="fw-normal mb-0">Wishlist</h3>
             <div>
-              <p class="mb-0"><span class="text-muted">Sort by:</span>
-                <a href="#!" class="text-body">price <i class="fas fa-angle-down mt-1"></i></a></p>
+              <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!" class="text-body">price <i
+                    class="fas fa-angle-down mt-1"></i></a></p>
             </div>
           </div>
 
@@ -24,7 +24,7 @@
             <div class="card-body p-4">
               <div class="row d-flex justify-content-between align-items-center">
                 <div class="col-md-2 col-lg-2 col-xl-2">
-                  <img class="img-fluid rounded-3"
+                  <img
                     src="{{ $wishlistItem->product->productImages[0]->image }}"
                     alt="{{ $wishlistItem->product->name }}">
                 </div>
@@ -57,6 +57,14 @@
               </div>
             </div>
           </div>
+          @empty
+
+          <div class="text-center p-5">
+            <h4 class="text-muted">You don't have any items in your wishlist.</h4>
+            <a href="{{ url('/collections') }}" class="btn btn-primary btn-lg mt-4">Start Shopping</a>
+        </div>
+    @endforelse
+
 
 
 
@@ -76,17 +84,6 @@
               <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-warning btn-block btn-lg">Proceed to Pay</button>
             </div>
           </div>
-
-
-
-          @empty
-
-          <div class="text-center p-5">
-            <h4 class="text-muted">You don't have any items in your wishlist.</h4>
-            <a href="{{ url('/collections') }}" class="btn btn-primary btn-lg mt-4">Start Shopping</a>
-        </div>
-
-          @endforelse
 
         </div>
       </div>
